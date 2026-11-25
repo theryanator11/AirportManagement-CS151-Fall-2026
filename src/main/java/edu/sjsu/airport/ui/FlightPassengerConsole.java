@@ -34,7 +34,7 @@ public final class FlightPassengerConsole {
         while (running) {
             displayMenu();
             int choice = input.readInt(
-                    "Select an option: ", 0, 13);
+                    "Select an option: ", 0, 14);
 
             switch (choice) {
                 case 1 -> registerPassenger();
@@ -461,6 +461,7 @@ public final class FlightPassengerConsole {
         output.println("11. Add international customs requirement");
         output.println("12. View international check-in deadline");
         output.println("13. Check passenger connection risk");
+        output.println("14. Presidential Flight");
         output.println("0. Return to main menu");
     }
 }

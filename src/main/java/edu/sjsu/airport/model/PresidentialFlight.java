@@ -75,7 +75,7 @@ public class PresidentialFlight extends Flight{
         }
     }
 
-    public void salutePresident(){
+    public static void salutePresident(){
         System.out.println("Oh say can you see, by the dawn's early light!");
         System.out.println("what so proudly we hailed, at the twightlight's last gleaming!");
     }
