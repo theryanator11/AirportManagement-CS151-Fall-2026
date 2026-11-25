@@ -50,6 +50,7 @@ public final class FlightPassengerConsole {
                 case 11 -> addCustomsRequirement();
                 case 12 -> displayInternationalCheckInDeadline();
                 case 13 -> checkPassengerConnectionRisk();
+                case 14 -> registerPresidentialFlight();
                 case 0 -> running = false;
                 default -> throw new IllegalStateException(
                         "Unexpected menu choice: " + choice);
@@ -107,6 +108,34 @@ public final class FlightPassengerConsole {
                     "Unable to register flight: "
                             + exception.getMessage());
         }
+    }
+
+    private void registerPresidentialFlight(){
+        output.println();
+        output.println("Our fantastic president needs to get somewhere. God Bless America!");
+
+        try {
+            DomesticFlight flight = new DomesticFlight(
+                    input.readRequiredLine("Flight number: "),
+                    input.readRequiredLine("Origin: "),
+                    input.readRequiredLine("Destination: "),
+                    readDateTime("Departure (YYYY-MM-DDTHH:MM): "),
+                    readDateTime("Arrival (YYYY-MM-DDTHH:MM): "),
+                    input.readInt("Passenger capacity: ", 1, 10000),
+                    input.readRequiredLine("Operating state: "),
+                    input.readDouble("Domestic tax rate: ", 0.0),
+                    input.readYesNo(
+                            "Resident discount available? (yes/no): "));
+
+            system.addFlight(flight);
+            output.println(
+                    flight.getFlightNumber()
+                            + " was registered successfully.");
+        } catch (RuntimeException exception) {
+            output.println(
+                    "Unable to register flight: "
+                            + exception.getMessage());
+        }   
     }
 
     private void registerInternationalFlight() {
